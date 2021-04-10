@@ -1,0 +1,28 @@
+@(user: String,Projects: Seq[String])(implicit request: RequestHeader)
+
+@main("Projects") {
+    <div style="height:100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #e0bc6f">
+    <h2 style="text-align: center">@user Projects</h2>
+    <br>
+    <ul style="text-align: center; font-size: 1.5rem;">
+        @for((project,i) <- Projects.zipWithIndex) {
+            <li style="color: black"><b>@project</b></li>
+            <form method="post" style="display: flex;flex-direction: column;" action="@routes.APIController.deleteProject()">
+                <input type="hidden" name="index" value="@i"/>
+                <input type="submit" value="Delete"/>
+            </form>
+        }
+
+    </ul>
+
+    <form method="post" style="margin-top: 50px;" action="@routes.APIController.addProject()" style="text-align: center">
+    Add Project:
+        <input type="text" name="newProject"></input>
+        <input type="submit"></input>
+    </form>
+
+    <div style="text-align: center">
+        <a href="@routes.APIController.logout()">Logout</a>
+    </div>
+    </div>
+}

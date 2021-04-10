@@ -1,0 +1,31 @@
+@()
+
+@main("Welcome To XenonStack") {
+@defining(play.core.PlayVersion.current) { version =>
+
+    <div style="display: flex; background-color: #e0bc6f; justify-content: space-around; align-items: center;height: 100vh" >
+        <h1 style="text-align: center; font-size: 2rem; ">XenonStack HR Portal</h1>
+        <div style="display: flex; flex-direction: column; justify-content: center;align-items: center;height: 50%;width: 30%; border: 2px solid black; background-color: #cccccc""; >
+        <h2 >Create Employee</h2>
+        <form method="post" style="margin: 20px;" action="@routes.APIController.createUser()">
+            Username:
+            <input type="text" style="margin: 10px;" name="username"></input><br>
+            Password:
+            <input type="text" style="margin: 10px;" name="password"></input><br>
+            <input type="submit"> </input>
+        </form>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center;align-items: center;
+            height: 50%;width: 30%; border: 2px solid black; background-color: #cccccc"; >
+        <h2>Login</h2>
+        <form method="post" style="margin: 20px;" action="@routes.APIController.ValidateLoginPost()">
+            Username:
+            <input type="text" style="margin: 10px;" name="username" ></input><br>
+            Password:
+            <input type="text" style="margin: 10px;" name="password"></input><br>
+            <input type= "submit" > </input>
+        </form>
+        </div>
+    </div>
+}
+}
